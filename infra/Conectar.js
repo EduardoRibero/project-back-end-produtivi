@@ -3,7 +3,6 @@ class Conectar{
         this.conexao = conexao
         this.createTableUsers()
         this.createTableMensagens()
-
     }
 
     createTableUsers(){
@@ -44,16 +43,6 @@ class Conectar{
             }
         })
     }
-
-    // getAllUsers(){
-    //     const sql = `select * from usuarios;`
-    //     this.conexao.query(sql, (err)=>{
-    //         if(err){
-    //             console.log("Erro ao criar a tabela tarefas" + err)
-    //             return
-    //         }
-    //     })
-    // }
 }
 
 export default new Conectar()
