@@ -4,10 +4,12 @@ import conexao from './infra/conexao.js'
 import Conectar from './infra/Conectar.js'
 
 import UsersModels from './models/UsersModels.js'
+import MensagensModels from './models/MensagensModels.js'
 
-UsersModels.getAllUsers()
 
 Conectar.init(conexao)
+UsersModels.getAllUsers()
+MensagensModels.getAllMensagens()
 
 const app = express()
 

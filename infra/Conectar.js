@@ -17,7 +17,7 @@ class Conectar{
         
         this.conexao.query(sql, (err)=>{
             if(err){
-                console.log("Erro ao criar a tabela tarefas" + err)
+                console.log("Erro ao criar a tabela usuarios" + err)
                 return
             }
         })
@@ -38,7 +38,7 @@ class Conectar{
         
         this.conexao.query(sql, (err)=>{
             if(err){
-                console.log("Erro ao criar a tabela tarefas" + err)
+                console.log("Erro ao criar a tabela mensagens" + err)
                 return
             }
         })
