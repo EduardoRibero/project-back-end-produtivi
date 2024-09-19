@@ -5,3 +5,5 @@ class UsersControllers{
         return UsersModels.getAllUsers()
     }
 }
+
+export default new UsersControllers()

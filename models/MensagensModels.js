@@ -2,7 +2,7 @@ import conexao from "../infra/conexao.js";
 
 class MensagensModels{
 
-    getAllMensagens(usersarray){
+    getMensagensByUsers(usersarray){
         const sql = `select id, mensagem, id_destinatario, id_remetente from mensagens 
                         where (id_remetente = ? and id_destinatario = ?)
                                 or
