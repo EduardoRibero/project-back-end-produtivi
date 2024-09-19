@@ -1,11 +1,16 @@
 import conexao from "../infra/conexao.js";
 
 class MensagensModels{
-    getAllMensagens(){
-        const sql = `select * from mensagens;`
+
+    getAllMensagens(usersarray){
+        const sql = `select id, mensagem, id_destinatario, id_remetente from mensagens 
+                        where (id_remetente = ? and id_destinatario = ?)
+                                or
+                            (id_remetente = ? and id_destinatario = ?)
+                        order by id;`
 
         return new Promise((resolve, reject)=>{
-            conexao.query(sql, (err, resposta)=>{
+            conexao.query(sql, usersarray, (err, resposta)=>{
                 if(err){
                     console.log("Erro ao tentar pegar todas as mensagens" + err)
                     reject(err)
@@ -15,6 +20,7 @@ class MensagensModels{
             })
         })
     }
+    
 }
 
 export default new MensagensModels()

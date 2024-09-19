@@ -9,7 +9,7 @@ import MensagensModels from './models/MensagensModels.js'
 
 Conectar.init(conexao)
 UsersModels.getAllUsers()
-MensagensModels.getAllMensagens()
+MensagensModels.getAllMensagens([4,1,1,4])
 
 const app = express()
 
