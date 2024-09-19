@@ -16,7 +16,6 @@ class MensagensModels{
                     reject(err)
                 }
                 resolve(resposta)
-                console.log(resposta)
             })
         })
     }

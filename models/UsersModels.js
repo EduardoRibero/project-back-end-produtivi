@@ -12,7 +12,6 @@ class UsersModels{
                     reject(err)
                 }
                 resolve(resposta)
-                console.log(resposta)
             })
 
         })

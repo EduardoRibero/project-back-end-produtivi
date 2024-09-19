@@ -10,10 +10,11 @@ router.get('/users', (req, res)=>{
             .catch((err)=> res.status(400).json(err))
 })
 
-router.get('/mensagens', (req, res)=>{
-    const idUsers = req.body
-    console.log(idUsers)
-    const resposta = MensagensControllers.getMensagensByUsers(idUsers.value)
+router.get('/mensagens/:id', (req, res)=>{
+    const idUser = req.params
+    const id = parseInt(idUser.id)
+    const arrayIds = [1, id, id, 1]
+    const resposta = MensagensControllers.getMensagensByUsers(arrayIds)
     resposta.then((resposta)=> res.status(200).json(resposta))
             .catch((err)=> res.status(400).json(err))
 })
