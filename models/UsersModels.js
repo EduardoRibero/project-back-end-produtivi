@@ -3,7 +3,7 @@ import conexao from "../infra/conexao.js";
 class UsersModels{
 
     getAllUsers(){
-        const sql = `select * from usuarios;`
+        const sql = `select * from usuarios where id <> 1;`
         return new Promise((resolve, reject)=>{
 
             conexao.query(sql, (err, resposta)=>{

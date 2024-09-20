@@ -3,7 +3,7 @@ import conexao from "../infra/conexao.js";
 class MensagensModels{
 
     getMensagensByUsers(usersarray){
-        const sql = `select id, mensagem, id_destinatario, id_remetente from mensagens 
+        const sql = `select id, mensagem, id_destinatario, id_remetente, insert_time from mensagens 
                         where (id_remetente = ? and id_destinatario = ?)
                                 or
                             (id_remetente = ? and id_destinatario = ?)
