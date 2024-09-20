@@ -19,5 +19,12 @@ router.get('/mensagens/:id', (req, res)=>{
             .catch((err)=> res.status(400).json(err))
 })
 
+router.post('/mensagens', (req, res)=>{
+    const mensagem = req.body
+    const resposta = MensagensControllers.postNewMessage(mensagem.msg, mensagem.id)
+    resposta.then((resposta) => res.status(201).json(resposta))
+            .catch((err)=> res.status(400).json(err))
+})
+
 
 export default router

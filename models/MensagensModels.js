@@ -19,6 +19,20 @@ class MensagensModels{
             })
         })
     }
+
+    postNewMessage(msg, id){
+        const sql = `insert into mensagens(mensagem, id_destinatario, id_remetente) values (?, ?, ?);`
+        
+        return new Promise((resolve, reject)=>{
+            conexao.query(sql, [msg, parseInt(id), 1], (err, resposta)=>{
+                if(err){
+                    console.log(`Erro ao tentar enviar nova mensagem : ${err}`)
+                    reject(err)
+                }
+                resolve(resposta)
+            })
+        })
+    }
     
 }
 
