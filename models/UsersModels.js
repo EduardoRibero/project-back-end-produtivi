@@ -2,9 +2,9 @@ import conexao from "../infra/conexao.js";
 
 class UsersModels {
 
-    getUser(){
+    getUser() {
         const sql = 'select * from usuarios;'
-        
+
         return new Promise((resolve, reject) => {
 
             conexao.query(sql, (err, resposta) => {
@@ -26,6 +26,7 @@ class UsersModels {
                             m.insert_time,
                             m.id_remetente AS user_id
                         FROM mensagens m
+                        where status_msg <> 'deletado'
                         UNION ALL
                         SELECT
                             m.id,
@@ -33,6 +34,7 @@ class UsersModels {
                             m.insert_time,
                             m.id_destinatario AS user_id
                         FROM mensagens m
+                        where status_msg <> 'deletado'
                     ),
                     ranked_messages AS (
                         SELECT
@@ -55,7 +57,7 @@ class UsersModels {
                         rm.rn = 1 and u.id <> 1)
                     ORDER BY
                         rm.insert_time DESC;`
-                        
+
         return new Promise((resolve, reject) => {
 
             conexao.query(sql, (err, resposta) => {
@@ -69,12 +71,12 @@ class UsersModels {
         })
     }
 
-    getUserById(id){
+    getUserById(id) {
         const sql = `select * from usuarios where id  = ?;`
 
         return new Promise((resolve, reject) => {
 
-            conexao.query(sql,[id], (err, resposta) => {
+            conexao.query(sql, [id], (err, resposta) => {
                 if (err) {
                     console.log("Erro ao tentar pegar usuario por ID" + err)
                     reject(err)
@@ -85,12 +87,12 @@ class UsersModels {
         })
     }
 
-    updateUser(userNew, id){
+    updateUser(userNew, id) {
         const sql = `update usuarios set nome = ?, telefone= ? where id = ?;`
 
         return new Promise((resolve, reject) => {
 
-            conexao.query(sql,[userNew.nome,userNew.telefone,id], (err, resposta) => {
+            conexao.query(sql, [userNew.nome, userNew.telefone, id], (err, resposta) => {
                 if (err) {
                     console.log("Erro ao tentar atualizar usuario" + err)
                     reject(err)
@@ -101,12 +103,12 @@ class UsersModels {
         })
     }
 
-    postUser(userNew){
+    postUser(userNew) {
         const sql = `insert into usuarios (nome, telefone) value (? , ?);`
 
         return new Promise((resolve, reject) => {
 
-            conexao.query(sql,[userNew.nome,userNew.telefone], (err, resposta) => {
+            conexao.query(sql, [userNew.nome, userNew.telefone], (err, resposta) => {
                 if (err) {
                     console.log("Erro ao tentar Criar usuario" + err)
                     reject(err)
@@ -117,12 +119,12 @@ class UsersModels {
         })
     }
 
-    deletUserById(id){
+    deletUserById(id) {
         const sql = `update usuarios set status_user = 'deletado' where id = ?;`
 
         return new Promise((resolve, reject) => {
 
-            conexao.query(sql,[id], (err, resposta) => {
+            conexao.query(sql, [id], (err, resposta) => {
                 if (err) {
                     console.log("Erro ao tentar apagar usuario por ID" + err)
                     reject(err)

@@ -65,5 +65,13 @@ router.post('/mensagens', (req, res)=>{
             .catch((err)=> res.status(400).json(err))
 })
 
+router.delete('/mensagens/:id', (req, res)=>{
+    const idUser = req.params
+    const id = parseInt(idUser.id)
+    const resposta = MensagensControllers.deleteMsgById(id)
+    resposta.then((resposta)=> res.status(200).json(resposta))
+            .catch((err)=> res.status(400).json(err))
+})
+
 
 export default router

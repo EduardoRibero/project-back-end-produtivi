@@ -4,9 +4,9 @@ class MensagensModels{
 
     getMensagensByUsers(usersarray){
         const sql = `select id, mensagem, id_destinatario, id_remetente, insert_time from mensagens 
-                        where (id_remetente = ? and id_destinatario = ?)
+                        where (id_remetente = ? and id_destinatario = ?  and status_msg <> 'deletado')
                                 or
-                            (id_remetente = ? and id_destinatario = ?)
+                            (id_remetente = ? and id_destinatario = ?  and status_msg <> 'deletado')
                         order by id;`
 
         return new Promise((resolve, reject)=>{
@@ -31,6 +31,22 @@ class MensagensModels{
                 }
                 resolve(resposta)
             })
+        })
+    }
+
+    deleteMsgById(id){
+        const sql = `update mensagens set status_msg = 'deletado' where id = ?;`
+
+        return new Promise((resolve, reject) => {
+
+            conexao.query(sql,[id], (err, resposta) => {
+                if (err) {
+                    console.log("Erro ao tentar apagar usuario por ID" + err)
+                    reject(err)
+                }
+                resolve(resposta)
+            })
+
         })
     }
     

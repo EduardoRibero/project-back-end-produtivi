@@ -8,6 +8,10 @@ class MensagensControllers{
     postNewMessage(msg, id){
         return MensagensModels.postNewMessage(msg, id)
     }
+
+    deleteMsgById(id){
+        return MensagensModels.deleteMsgById(id)
+    }
 }
 
 export default new MensagensControllers()
