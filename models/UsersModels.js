@@ -92,7 +92,7 @@ class UsersModels {
 
             conexao.query(sql,[userNew.nome,userNew.telefone], (err, resposta) => {
                 if (err) {
-                    console.log("Erro ao tentar atualizar usuario" + err)
+                    console.log("Erro ao tentar Criar usuario" + err)
                     reject(err)
                 }
                 resolve(resposta)
@@ -102,7 +102,19 @@ class UsersModels {
     }
 
     deletUserById(id){
+        const sql = `update usuarios set status_user = 'deletado' where id = ?;`
 
+        return new Promise((resolve, reject) => {
+
+            conexao.query(sql,[id], (err, resposta) => {
+                if (err) {
+                    console.log("Erro ao tentar apagar usuario por ID" + err)
+                    reject(err)
+                }
+                resolve(resposta)
+            })
+
+        })
     }
 }
 
