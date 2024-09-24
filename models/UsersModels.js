@@ -52,6 +52,34 @@ class UsersModels {
 
         })
     }
+
+    getUserById(id){
+        const sql = `select * from usuarios where id  = ?;`
+
+        return new Promise((resolve, reject) => {
+
+            conexao.query(sql,[id], (err, resposta) => {
+                if (err) {
+                    console.log("Erro ao tentar pegar usuario por ID" + err)
+                    reject(err)
+                }
+                resolve(resposta)
+            })
+
+        })
+    }
+
+    updateUser(userNew, id){
+
+    }
+
+    postUser(user){
+
+    }
+
+    deletUserById(id){
+
+    }
 }
 
 export default new UsersModels()
