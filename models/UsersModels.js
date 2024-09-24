@@ -70,7 +70,19 @@ class UsersModels {
     }
 
     updateUser(userNew, id){
+        const sql = `update usuarios set nome = ?, telefone= ? where id = ?;`
 
+        return new Promise((resolve, reject) => {
+
+            conexao.query(sql,[userNew.nome,userNew.telefone,id], (err, resposta) => {
+                if (err) {
+                    console.log("Erro ao tentar atualizar usuario" + err)
+                    reject(err)
+                }
+                resolve(resposta)
+            })
+
+        })
     }
 
     postUser(user){
