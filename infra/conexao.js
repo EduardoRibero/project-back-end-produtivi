@@ -1,11 +1,14 @@
 import mysql2 from 'mysql2'
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const conexao = mysql2.createConnection({
-    host: "localhost",
-    port: 3306,
-    user: "root",
-    password: "admin",
-    database: "produtivi"
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    database: process.env.DB_NAME
 });
 
 export default conexao
