@@ -1,8 +1,8 @@
 import MensagensModels from "../models/MensagensModels.js";
 
 class MensagensControllers{
-    getMensagensByUsers(idUsersArray){
-        return MensagensModels.getMensagensByUsers(idUsersArray)
+    getMensagensByUsers(id){
+        return MensagensModels.getMensagensByUsers(id)
     }
 
     postNewMessage(msg, id){

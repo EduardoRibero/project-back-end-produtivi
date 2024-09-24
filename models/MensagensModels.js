@@ -2,15 +2,15 @@ import conexao from "../infra/conexao.js";
 
 class MensagensModels{
 
-    getMensagensByUsers(usersarray){
+    getMensagensByUsers(id){
         const sql = `select id, mensagem, id_destinatario, id_remetente, insert_time from mensagens 
-                        where (id_remetente = ? and id_destinatario = ?  and status_msg <> 'deletado')
+                        where (id_remetente = ? and id_destinatario = 1  and status_msg <> 'deletado')
                                 or
-                            (id_remetente = ? and id_destinatario = ?  and status_msg <> 'deletado')
+                            (id_remetente = 1 and id_destinatario = ?  and status_msg <> 'deletado')
                         order by id;`
 
         return new Promise((resolve, reject)=>{
-            conexao.query(sql, usersarray, (err, resposta)=>{
+            conexao.query(sql, [id, id], (err, resposta)=>{
                 if(err){
                     console.log("Erro ao tentar pegar todas as mensagens" + err)
                     reject(err)

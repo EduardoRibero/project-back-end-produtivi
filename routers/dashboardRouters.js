@@ -52,8 +52,7 @@ router.delete('/users/:id', (req, res)=>{
 router.get('/mensagens/:id', (req, res)=>{
     const idUser = req.params
     const id = parseInt(idUser.id)
-    const arrayIds = [1, id, id, 1]
-    const resposta = MensagensControllers.getMensagensByUsers(arrayIds)
+    const resposta = MensagensControllers.getMensagensByUsers(id)
     resposta.then((resposta)=> res.status(200).json(resposta))
             .catch((err)=> res.status(400).json(err))
 })
