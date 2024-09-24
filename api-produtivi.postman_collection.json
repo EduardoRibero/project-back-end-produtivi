@@ -1,0 +1,90 @@
+{
+	"info": {
+		"_postman_id": "c9c12fd6-a98a-4c8a-88c3-90f6c9bd886d",
+		"name": "api-produtivi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "27791859",
+		"_collection_link": "https://dark-spaceship-384883.postman.co/workspace/Projeto-Intencivo-java-Spring~fda3470b-637a-44e5-9a4f-ca890ee8a243/collection/27791859-c9c12fd6-a98a-4c8a-88c3-90f6c9bd886d?action=share&source=collection_link&creator=27791859"
+	},
+	"item": [
+		{
+			"name": "GetUsersAll",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostMenssage",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 4,\r\n    \"msg\": \"Olá!\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3000/mensagens",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"mensagens"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetMenssageByIdUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3000/mensagens/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3000",
+					"path": [
+						"mensagens",
+						"4"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
