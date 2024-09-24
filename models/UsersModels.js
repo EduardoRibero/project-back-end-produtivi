@@ -2,6 +2,22 @@ import conexao from "../infra/conexao.js";
 
 class UsersModels {
 
+    getUser(){
+        const sql = 'select * from usuarios;'
+        
+        return new Promise((resolve, reject) => {
+
+            conexao.query(sql, (err, resposta) => {
+                if (err) {
+                    console.log("Erro ao tentar pegar todos os usuarios" + err)
+                    reject(err)
+                }
+                resolve(resposta)
+            })
+
+        })
+    }
+
     getAllUsers() {
         const sql = `WITH user_messages AS (
                         SELECT

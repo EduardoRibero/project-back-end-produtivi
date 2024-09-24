@@ -5,6 +5,7 @@
   "main": "index.js",
   "type": "module",
   "scripts": {
+    "dev": "nodemon index.js",
     "start": "node index.js"
   },
   "author": "",
@@ -16,6 +17,9 @@
     "mysql2": "^3.11.3"
   },
   "config": {
-    "port": 3000
+    "port": 3001
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.7"
   }
 }

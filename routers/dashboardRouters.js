@@ -4,6 +4,12 @@ import MensagensControllers from "../controllers/MensagensControllers.js";
 
 const router = Router()
 
+router.get('/allusers', (req, res)=>{
+    const resposta = UsersControllers.getUser()
+    resposta.then((resposta)=> res.status(200).json(resposta))
+            .catch((err)=> res.status(400).json(err))
+})
+
 router.get('/users', (req, res)=>{
     const resposta = UsersControllers.getAllUsers()
     resposta.then((resposta)=> res.status(200).json(resposta))

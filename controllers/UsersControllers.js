@@ -1,6 +1,9 @@
 import UsersModels from "../models/UsersModels.js";
 
 class UsersControllers{
+    getUser(){
+        return UsersModels.getUser()
+    }
     getAllUsers(){
         return UsersModels.getAllUsers()
     }
