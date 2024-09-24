@@ -18,6 +18,13 @@ router.get('/users/:id', (req, res)=>{
             .catch((err)=> res.status(400).json(err))
 })
 
+router.post('/users', (req, res)=>{
+    const userNew = req.body
+    const resposta = UsersControllers.postUser(userNew)
+    resposta.then((resposta)=> res.status(200).json(resposta))
+            .catch((err)=> res.status(400).json(err))
+})
+
 router.put('/users/:id', (req, res)=>{
     const idUser = req.params
     const userNew = req.body

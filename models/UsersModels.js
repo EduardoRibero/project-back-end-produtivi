@@ -85,8 +85,20 @@ class UsersModels {
         })
     }
 
-    postUser(user){
+    postUser(userNew){
+        const sql = `insert into usuarios (nome, telefone) value (? , ?);`
 
+        return new Promise((resolve, reject) => {
+
+            conexao.query(sql,[userNew.nome,userNew.telefone], (err, resposta) => {
+                if (err) {
+                    console.log("Erro ao tentar atualizar usuario" + err)
+                    reject(err)
+                }
+                resolve(resposta)
+            })
+
+        })
     }
 
     deletUserById(id){
